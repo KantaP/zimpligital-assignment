@@ -2,22 +2,24 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:zimpligital_assignment/providers/music_player_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zimpligital_assignment/domain/entities/music_detail.dart';
+import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_bloc.dart';
+import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_event.dart';
+import 'package:zimpligital_assignment/utils/format.dart';
 
-import '../../../models/music_player_models.dart';
 
-class MusicItem extends ConsumerStatefulWidget {
+class MusicItem extends StatefulWidget {
   const MusicItem({super.key, required this.music, required this.musicIndex});
 
   final int musicIndex;
   final MusicDetail music;
 
   @override
-  ConsumerState<MusicItem> createState() => _MusicItemState();
+  State<MusicItem> createState() => _MusicItemState();
 }
 
-class _MusicItemState extends ConsumerState<MusicItem> {
+class _MusicItemState extends State<MusicItem> {
   Duration? _duration;
   String? _title;
   String? _album;
@@ -40,25 +42,17 @@ class _MusicItemState extends ConsumerState<MusicItem> {
     });
   }
 
-  String _formatDuration(Duration? d) {
-    if (d == null) return "--:--";
-    String twoDigits(int n) => n.toString().padLeft(2, "0");
-    String minutes = twoDigits(d.inMinutes.remainder(60));
-    String seconds = twoDigits(d.inSeconds.remainder(60));
-    return "${twoDigits(d.inHours)}:$minutes:$seconds";
-  }
 
-  void _handleOnTap() {
-    final musicPlayerNotifier = ref.read(musicplayerNotifier.notifier);
-    musicPlayerNotifier.pauseMusic();
-    musicPlayerNotifier.selectMusic(widget.musicIndex);
-    musicPlayerNotifier.playMusic();
+  void _handleOnTap(BuildContext context) {
+    context.read<MusicPlayerBloc>().add(MusicPlayerPaused());
+    context.read<MusicPlayerBloc>().add(MusicPlayerSelectedMusic(musicIndex: widget.musicIndex));
+    context.read<MusicPlayerBloc>().add(MusicPlayerPlayed());
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _handleOnTap,
+      onTap: () => _handleOnTap(context),
       child: ListTile(
         title: Text(
           "$_title ${(_artist != null && _artist!.isNotEmpty) ? "- $_artist" : ""}",
@@ -68,7 +62,7 @@ class _MusicItemState extends ConsumerState<MusicItem> {
           "$_album",
           style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
         ),
-        trailing: Text(_formatDuration(_duration)),
+        trailing: Text(formatDuration(_duration)),
       ),
     );
   }
