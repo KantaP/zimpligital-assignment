@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_bloc.dart';
-import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_state.dart';
+import 'package:zimpligital_assignment/presentation/blocs/music_player/music_list_bloc.dart';
+import 'package:zimpligital_assignment/presentation/blocs/music_player/music_list_state.dart';
 import 'package:zimpligital_assignment/presentation/pages/music_player_screen/widgets/music_item.dart';
 
 class MusicList extends StatelessWidget {
@@ -9,19 +9,20 @@ class MusicList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MusicPlayerBloc, MusicPlayerState>(
+    return BlocBuilder<MusicPlayerBloc, MusicListState>(
       builder: (context, state) {
         if (state is MusicPlayerLoadInProgress) {
           return const CircularProgressIndicator();
-        } else if (state is MusicPlayerLoadSuccess) {
+        } else if (state is MusicPlayerDataState) {
+          
           return ListView.builder(
             itemBuilder:
                 (context, index) => MusicItem(
                   key: Key("music_$index"),
-                  music: state.musicPlayer.playList[index],
+                  music: state.musicList[index],
                   musicIndex: index,
                 ),
-            itemCount: state.musicPlayer.playList.length,
+            itemCount: state.musicList.length,
           );
         }
         return Container(); //empty 
