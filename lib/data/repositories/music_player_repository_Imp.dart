@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:zimpligital_assignment/data/dataSources/local/local_music_datasource.dart';
 import 'package:zimpligital_assignment/domain/entities/music_detail.dart';
-import 'package:zimpligital_assignment/domain/entities/music_player.dart';
 import 'package:zimpligital_assignment/domain/repositories/music_player_repository.dart';
 
 class MusicPlayerRepositoryImp extends MusicPlayerRepository {
@@ -20,11 +19,5 @@ class MusicPlayerRepositoryImp extends MusicPlayerRepository {
       }
       return [];
     }
-  }
-  
-  @override
-  Future<MusicPlayer> initialMusicPlayer(List<MusicDetail> musics) async {
-    final MusicPlayer musicPlayer = MusicPlayer(playList: musics);
-    return musicPlayer;
   }
 }
