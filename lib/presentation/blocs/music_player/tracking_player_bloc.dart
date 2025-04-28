@@ -3,19 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/tracking_player_event.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/tracking_player_state.dart';
 
-class TrackingPlayerBloc extends Bloc<TrackingPlayerEvent, TrackingPlayerState>{
+class TrackingPlayerBloc
+    extends Bloc<TrackingPlayerEvent, TrackingPlayerState> {
   final AudioPlayer _audioPlayer;
 
   TrackingPlayerBloc({required AudioPlayer audioPlayer})
-  : _audioPlayer = audioPlayer, 
-  super(TrackingPlayerDataState()) {
-     on<MusicPlayerPlayed>(_onPlayed);
+    : _audioPlayer = audioPlayer,
+      super(TrackingPlayerDataState()) {
+    on<MusicPlayerPlayed>(_onPlayed);
     on<MusicPlayerPaused>(_onPaused);
     on<MusicPlayerSeekTo>(_onSeekTo);
     on<MusicPlayerSetPosition>(_onSetPosition);
     on<MusicPlayerPlayStateChanged>(_onPlayStateChanged);
     on<MusicPlayerDurationChanged>(_onDurationChanged);
-    
+
     _audioPlayer.onPlayerComplete.listen((_) {
       add(MusicPlayerSetPosition(position: Duration.zero));
       add(MusicPlayerDurationChanged(duration: Duration.zero));
@@ -35,20 +36,27 @@ class TrackingPlayerBloc extends Bloc<TrackingPlayerEvent, TrackingPlayerState>{
     });
   }
 
-
-  Future<void> _onPlayStateChanged(MusicPlayerPlayStateChanged event, Emitter<TrackingPlayerState> emit) async {
-    if(_audioPlayer.source == null) return;
-    if(state is TrackingPlayerDataState) {
+  Future<void> _onPlayStateChanged(
+    MusicPlayerPlayStateChanged event,
+    Emitter<TrackingPlayerState> emit,
+  ) async {
+    if (_audioPlayer.source == null) return;
+    if (state is TrackingPlayerDataState) {
       final newState = (state as TrackingPlayerDataState).copyWith(
-        playerState: event.playerState
+        playerState: event.playerState,
       );
       emit(newState);
     }
   }
 
-  Future<void> _onDurationChanged(MusicPlayerDurationChanged event , Emitter<TrackingPlayerState> emit) async {
-    if(state is TrackingPlayerDataState) {
-      final newState = (state as TrackingPlayerDataState).copyWith(duration: event.duration);
+  Future<void> _onDurationChanged(
+    MusicPlayerDurationChanged event,
+    Emitter<TrackingPlayerState> emit,
+  ) async {
+    if (state is TrackingPlayerDataState) {
+      final newState = (state as TrackingPlayerDataState).copyWith(
+        duration: event.duration,
+      );
       emit(newState);
     }
   }
@@ -73,11 +81,8 @@ class TrackingPlayerBloc extends Bloc<TrackingPlayerEvent, TrackingPlayerState>{
   ) async {
     if (state is TrackingPlayerDataState) {
       final currentState = state as TrackingPlayerDataState;
-      final newPosition =
-          currentState.currentDuration * event.seekToPostion;
-      final newState = currentState.copyWith(
-        position: newPosition,
-      );
+      final newPosition = currentState.currentDuration * event.seekToPostion;
+      final newState = currentState.copyWith(position: newPosition);
       _audioPlayer.seek(newPosition);
       emit(newState);
     }
@@ -89,11 +94,8 @@ class TrackingPlayerBloc extends Bloc<TrackingPlayerEvent, TrackingPlayerState>{
   ) async {
     if (state is TrackingPlayerDataState) {
       final currentState = state as TrackingPlayerDataState;
-      final newState = currentState.copyWith(
-        position: event.position,
-      );
+      final newState = currentState.copyWith(position: event.position);
       emit(newState);
     }
   }
-
 }

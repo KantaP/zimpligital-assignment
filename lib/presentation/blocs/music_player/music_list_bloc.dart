@@ -41,8 +41,7 @@ class MusicPlayerBloc extends Bloc<MusicPlayerEvent, MusicListState> {
         musicSelected: musicSelected,
       );
       _audioPlayer.pause();
-      _audioPlayer.setSource(AssetSource(musicSelected.path));
-      _audioPlayer.resume();
+      _audioPlayer.play(AssetSource(musicSelected.path));
       emit(newState);
     }
   }

@@ -12,9 +12,12 @@ class MusicList extends StatelessWidget {
     return BlocBuilder<MusicPlayerBloc, MusicListState>(
       builder: (context, state) {
         if (state is MusicPlayerLoadInProgress) {
-          return const CircularProgressIndicator();
+          return SizedBox(
+            width: 50,
+            height: 50,
+            child: const CircularProgressIndicator(),
+          );
         } else if (state is MusicPlayerDataState) {
-          
           return ListView.builder(
             itemBuilder:
                 (context, index) => MusicItem(
@@ -25,7 +28,7 @@ class MusicList extends StatelessWidget {
             itemCount: state.musicList.length,
           );
         }
-        return Container(); //empty 
+        return Container(); //empty
       },
     );
   }
