@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/domain/entities/music_detail.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_list_bloc.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_list_event.dart';
+import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_cubit.dart';
 import 'package:zimpligital_assignment/utils/format.dart';
 
 
@@ -44,7 +45,7 @@ class _MusicItemState extends State<MusicItem> {
 
 
   void _handleOnTap(BuildContext context) async{
-    context.read<MusicPlayerBloc>().add(MusicPlayerSelectedMusic(musicIndex: widget.musicIndex));
+    context.read<MusicPlayerCubit>().selectedMusic(widget.musicIndex);
   }
 
   @override

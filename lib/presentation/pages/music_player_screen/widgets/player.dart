@@ -14,7 +14,6 @@ class Player extends StatelessWidget {
     final trackingSlider = TrackingSlider();
 
     return Container(
-      // height: 100,
       color: Colors.amber,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
