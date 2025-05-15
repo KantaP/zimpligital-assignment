@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/domain/entities/music_detail.dart';
-import 'package:zimpligital_assignment/presentation/blocs/music_player/music_list_bloc.dart';
-import 'package:zimpligital_assignment/presentation/blocs/music_player/music_list_event.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_cubit.dart';
 import 'package:zimpligital_assignment/utils/format.dart';
 

@@ -15,7 +15,7 @@ class MusicList extends StatelessWidget {
         return ListView.builder(
           itemBuilder:
               (context, index) => MusicItem(
-                key: Key("music_$index"),
+                key: ValueKey("music_$index"),
                 music: musicList[index],
                 musicIndex: index,
               ),
