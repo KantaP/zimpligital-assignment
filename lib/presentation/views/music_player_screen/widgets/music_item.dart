@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/domain/entities/music_detail.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_cubit.dart';
-import 'package:zimpligital_assignment/utils/format.dart';
+import 'package:zimpligital_assignment/presentation/utils/duration_ext.dart';
 
 
 class MusicItem extends StatefulWidget {
@@ -59,7 +59,7 @@ class _MusicItemState extends State<MusicItem> {
           "$_album",
           style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
         ),
-        trailing: Text(formatDuration(_duration)),
+        trailing: Text( (_duration != null) ?  _duration!.formatDuration() : '--:--'),
       ),
     );
   }

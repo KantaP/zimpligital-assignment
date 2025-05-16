@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/domain/entities/music_detail.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_cubit.dart';
+import 'package:zimpligital_assignment/presentation/models/music_player_state.dart';
 
 class SongSelectedText extends StatelessWidget {
   const SongSelectedText({super.key});

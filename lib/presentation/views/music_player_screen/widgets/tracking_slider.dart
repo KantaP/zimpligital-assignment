@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_cubit.dart';
+import 'package:zimpligital_assignment/presentation/models/music_player_state.dart';
 
 class TrackingSlider extends StatelessWidget {
   const TrackingSlider({super.key});

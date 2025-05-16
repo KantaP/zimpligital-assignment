@@ -1,53 +1,14 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zimpligital_assignment/domain/entities/music_detail.dart';
 import 'package:zimpligital_assignment/domain/usecases/audio_player_pause_useCase.dart';
 import 'package:zimpligital_assignment/domain/usecases/audio_player_play_useCase.dart';
 import 'package:zimpligital_assignment/domain/usecases/audio_player_resume_useCase.dart';
 import 'package:zimpligital_assignment/domain/usecases/audio_player_seekTo_useCase.dart';
 import 'package:zimpligital_assignment/domain/usecases/get_music_useCase.dart';
 import 'package:zimpligital_assignment/domain/usecases/initial_audio_player_useCase.dart';
+import 'package:zimpligital_assignment/presentation/models/music_player_state.dart';
 
-class MusicPlayerState extends Equatable {
-  final List<MusicDetail> musicList;
-  final MusicDetail? musicSelected;
-  final Duration currentDuration;
-  final Duration currentPosition;
-  final PlayerState? currentPlayerState;
-  const MusicPlayerState({
-    this.musicList = const [],
-    this.musicSelected,
-    this.currentDuration = Duration.zero,
-    this.currentPosition = Duration.zero,
-    this.currentPlayerState,
-  });
 
-  @override
-  List<Object?> get props => [
-    musicList,
-    musicSelected,
-    currentDuration,
-    currentPosition,
-    currentPlayerState,
-  ];
-
-  MusicPlayerState copyWith({
-    MusicDetail? musicSelected,
-    List<MusicDetail>? musicList,
-    Duration? duration,
-    Duration? position,
-    PlayerState? playerState,
-  }) {
-    return MusicPlayerState(
-      musicList: musicList ?? this.musicList,
-      musicSelected: musicSelected ?? this.musicSelected,
-      currentDuration: duration ?? currentDuration,
-      currentPosition: position ?? currentPosition,
-      currentPlayerState: playerState ?? currentPlayerState,
-    );
-  }
-}
 
 class MusicPlayerCubit extends Cubit<MusicPlayerState> {
   final GetMusicUseCase _getMusicUseCase;

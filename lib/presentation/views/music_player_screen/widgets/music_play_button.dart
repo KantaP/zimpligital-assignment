@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_cubit.dart';
+import 'package:zimpligital_assignment/presentation/models/music_player_state.dart';
 
 class MusicPlayButton extends StatelessWidget {
   const MusicPlayButton({super.key});

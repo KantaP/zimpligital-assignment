@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:zimpligital_assignment/presentation/pages/music_player_screen/widgets/music_play_button.dart';
-import 'package:zimpligital_assignment/presentation/pages/music_player_screen/widgets/song_selected_text.dart';
-import 'package:zimpligital_assignment/presentation/pages/music_player_screen/widgets/tracking_slider.dart';
-import 'package:zimpligital_assignment/presentation/pages/music_player_screen/widgets/tracking_text.dart';
+import 'package:zimpligital_assignment/presentation/views/music_player_screen/widgets/music_play_button.dart';
+import 'package:zimpligital_assignment/presentation/views/music_player_screen/widgets/song_selected_text.dart';
+import 'package:zimpligital_assignment/presentation/views/music_player_screen/widgets/tracking_slider.dart';
+import 'package:zimpligital_assignment/presentation/views/music_player_screen/widgets/tracking_text.dart';
 
 class Player extends StatelessWidget {
    Player({super.key});

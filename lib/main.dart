@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zimpligital_assignment/presentation/pages/music_player_screen/index.dart';
+import 'package:zimpligital_assignment/presentation/views/music_player_screen/index.dart';
 
 void main() {
   runApp(MyApp());

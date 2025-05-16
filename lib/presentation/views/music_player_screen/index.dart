@@ -1,4 +1,3 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/data/dataSources/local/local_music_datasource.dart';
@@ -10,8 +9,8 @@ import 'package:zimpligital_assignment/domain/usecases/audio_player_seekTo_useCa
 import 'package:zimpligital_assignment/domain/usecases/get_music_useCase.dart';
 import 'package:zimpligital_assignment/domain/usecases/initial_audio_player_useCase.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_cubit.dart';
-import 'package:zimpligital_assignment/presentation/pages/music_player_screen/widgets/music_list.dart';
-import 'package:zimpligital_assignment/presentation/pages/music_player_screen/widgets/player.dart';
+import 'package:zimpligital_assignment/presentation/views/music_player_screen/widgets/music_list.dart';
+import 'package:zimpligital_assignment/presentation/views/music_player_screen/widgets/player.dart';
 
 class MusicPlayerScreen extends StatelessWidget {
   MusicPlayerScreen({super.key});
