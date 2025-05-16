@@ -2,21 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zimpligital_assignment/data/dataSources/local/local_music_datasource.dart';
 import 'package:zimpligital_assignment/data/repositories/music_player_repository_Imp.dart';
-import 'package:zimpligital_assignment/domain/usecases/audio_player_pause_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/audio_player_play_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/audio_player_resume_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/audio_player_seekTo_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/get_music_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/initial_audio_player_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/pause_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/play_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/resume_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/seekTo_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/get_music_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/initial_useCase.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_player_cubit.dart';
-import 'package:zimpligital_assignment/presentation/views/music_player_screen/widgets/music_list.dart';
-import 'package:zimpligital_assignment/presentation/views/music_player_screen/widgets/player.dart';
+import 'package:zimpligital_assignment/presentation/widgets/music_list.dart';
+import 'package:zimpligital_assignment/presentation/widgets/player.dart';
 
 class MusicPlayerScreen extends StatelessWidget {
-  MusicPlayerScreen({super.key});
-
-  final musicList = MusicList();
-  final player = Player();
+  const MusicPlayerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +44,7 @@ class MusicPlayerScreen extends StatelessWidget {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[Expanded(flex: 2, child: musicList), player],
+            children: <Widget>[Expanded(flex: 2, child: MusicList()), Player()],
           ),
         ),
       ),

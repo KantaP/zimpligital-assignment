@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:bloc/bloc.dart';
-import 'package:zimpligital_assignment/domain/usecases/get_music_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/get_music_useCase.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_list_event.dart';
 import 'package:zimpligital_assignment/presentation/blocs/music_player/music_list_state.dart';
 

@@ -31,7 +31,7 @@ class SongSelectedText extends StatelessWidget {
             return Expanded(
               child: Text(
                 data['title'],
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 softWrap: true,
               ),
             );

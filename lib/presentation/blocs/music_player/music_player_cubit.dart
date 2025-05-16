@@ -1,11 +1,11 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zimpligital_assignment/domain/usecases/audio_player_pause_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/audio_player_play_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/audio_player_resume_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/audio_player_seekTo_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/get_music_useCase.dart';
-import 'package:zimpligital_assignment/domain/usecases/initial_audio_player_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/pause_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/play_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/resume_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/seekTo_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/get_music_useCase.dart';
+import 'package:zimpligital_assignment/domain/useCases/audio_player/initial_useCase.dart';
 import 'package:zimpligital_assignment/presentation/models/music_player_state.dart';
 
 
