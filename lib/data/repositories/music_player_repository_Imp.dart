@@ -11,7 +11,7 @@ class MusicPlayerRepositoryImp extends MusicPlayerRepository {
   MusicPlayerRepositoryImp({
     required LocalMusicDatasource localMusicDatasource,
   }) : _localMusicDatasource = localMusicDatasource,
-       _audioPlayer = AudioPlayer();
+        _audioPlayer = AudioPlayer();
 
   @override
   Future<List<MusicDetail>> getMusicList() async {
